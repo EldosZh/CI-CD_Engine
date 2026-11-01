@@ -1,0 +1,12 @@
+version: 1
+name: Retry demo (PowerShell)
+jobs:
+  test:
+    steps:
+      - shell: powershell
+        run: if ($env:CICD_ATTEMPT -lt 3) { exit 1 }; Write-Output 'third attempt succeeds'
+        retry:
+          max_attempts: 3
+          initial_delay: 100ms
+          max_delay: 1s
+          multiplier: 2

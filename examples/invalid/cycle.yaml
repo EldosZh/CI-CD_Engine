@@ -1,0 +1,12 @@
+version: 1
+name: Invalid cycle
+jobs:
+  a:
+    needs: [b]
+    steps: [{run: echo a}]
+  b:
+    needs: [c]
+    steps: [{run: echo b}]
+  c:
+    needs: [a]
+    steps: [{run: echo c}]

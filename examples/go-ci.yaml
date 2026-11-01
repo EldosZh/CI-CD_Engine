@@ -1,0 +1,18 @@
+version: 1
+name: Engine source checks
+jobs:
+  vet:
+    steps:
+      - uses: checkout
+      - command: [go, vet, ./...]
+  test:
+    steps:
+      - uses: checkout
+      - command: [go, test, ./...]
+  build:
+    needs: [vet, test]
+    steps:
+      - command: [go, build, -o, cicd, ./cmd/cicd]
+      - artifact:
+          name: cicd
+          path: cicd

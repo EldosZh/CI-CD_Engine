@@ -1,0 +1,15 @@
+/data/
+/bin/
+/dist/
+*.exe
+*.log
+coverage.out
+.idea/
+.vscode/
+.DS_Store
+web/node_modules/
+web/dist/
+.env
+.env.local
+*.secret
+/cicd

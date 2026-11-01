@@ -1,0 +1,9 @@
+data
+.git
+bin
+dist
+*.exe
+.env
+.env.local
+*.secret
+coverage.out

@@ -1,0 +1,12 @@
+version: 1
+name: Timeout demo (POSIX)
+jobs:
+  slow:
+    steps:
+      - shell: sh
+        run: sleep 60
+        timeout: 500ms
+  downstream:
+    needs: [slow]
+    steps:
+      - run: echo skipped

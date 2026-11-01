@@ -1,0 +1,12 @@
+version: 1
+name: Timeout demo (PowerShell)
+jobs:
+  slow:
+    steps:
+      - shell: powershell
+        run: Start-Sleep -Seconds 60
+        timeout: 500ms
+  downstream:
+    needs: [slow]
+    steps:
+      - run: echo skipped

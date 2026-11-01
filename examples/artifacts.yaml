@@ -1,0 +1,10 @@
+version: 1
+name: Artifact demo (PowerShell)
+jobs:
+  build:
+    steps:
+      - shell: powershell
+        run: New-Item -ItemType Directory -Force dist | Out-Null; Set-Content -Encoding ascii dist/app.txt 'hello from CI'
+      - artifact:
+          name: application
+          path: dist

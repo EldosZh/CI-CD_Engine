@@ -1,0 +1,12 @@
+version: 1
+name: Retry demo (POSIX)
+jobs:
+  test:
+    steps:
+      - shell: sh
+        run: test "$CICD_ATTEMPT" -ge 3
+        retry:
+          max_attempts: 3
+          initial_delay: 100ms
+          max_delay: 1s
+          multiplier: 2

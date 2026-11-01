@@ -1,0 +1,8 @@
+version: 1
+name: Node source checks
+jobs:
+  test:
+    steps:
+      - uses: checkout
+      - command: [npm, ci]
+      - command: [npm, test]

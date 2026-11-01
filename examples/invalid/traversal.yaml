@@ -1,0 +1,6 @@
+version: 1
+name: Invalid artifact
+jobs:
+  a:
+    steps:
+      - artifact: {name: escape, path: ../../host}

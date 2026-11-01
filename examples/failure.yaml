@@ -1,0 +1,22 @@
+version: 1
+name: Failure propagation
+jobs:
+  test:
+    steps:
+      - run: exit 7
+  independent:
+    steps:
+      - run: echo independent jobs continue
+  build:
+    needs: [test]
+    steps:
+      - run: echo should be skipped
+  package:
+    needs: [build]
+    steps:
+      - run: echo should be skipped too
+  report:
+    needs: [test]
+    if: failure()
+    steps:
+      - run: echo reporting failed test

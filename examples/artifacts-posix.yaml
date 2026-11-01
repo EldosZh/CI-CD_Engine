@@ -1,0 +1,10 @@
+version: 1
+name: Artifact demo (POSIX)
+jobs:
+  build:
+    steps:
+      - shell: sh
+        run: mkdir -p dist && printf 'hello from CI\n' > dist/app.txt
+      - artifact:
+          name: application
+          path: dist

@@ -1,0 +1,21 @@
+version: 1
+name: Parallel DAG
+on: [manual]
+jobs:
+  lint:
+    steps:
+      - run: echo lint
+  test:
+    steps:
+      - run: echo test
+  security:
+    steps:
+      - run: echo security
+  build:
+    needs: [lint, test, security]
+    steps:
+      - run: echo build
+  package:
+    needs: [build]
+    steps:
+      - run: echo package

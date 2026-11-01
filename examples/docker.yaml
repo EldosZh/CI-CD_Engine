@@ -1,0 +1,16 @@
+version: 1
+name: Docker shared workspace
+jobs:
+  build:
+    runs-on: docker
+    timeout: 2m
+    container:
+      image: alpine:3.21
+    env:
+      GREETING: hello
+    steps:
+      - run: printf '%s' "$GREETING" > app.txt
+      - run: cat app.txt
+      - artifact:
+          name: docker-output
+          path: app.txt

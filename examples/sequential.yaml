@@ -1,0 +1,10 @@
+version: 1
+name: Sequential workflow
+jobs:
+  first:
+    steps:
+      - command: [go, version]
+  second:
+    needs: [first]
+    steps:
+      - run: echo finished

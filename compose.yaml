@@ -1,0 +1,14 @@
+services:
+  engine:
+    build: .
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      CICD_API_TOKEN: ${CICD_API_TOKEN:?Set CICD_API_TOKEN before starting Compose}
+    volumes:
+      - engine-data:/data
+      - .:/source:ro
+    init: true
+    stop_grace_period: 45s
+volumes:
+  engine-data:
